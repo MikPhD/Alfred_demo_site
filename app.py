@@ -1,11 +1,27 @@
 import os
-
+import mysql.connector
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for, jsonify)
 
 
 app = Flask(__name__)
-used_ids = ['123', '456', '789']
+# Define the MySQL database connection
+cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!", host="alfred-database.mysql.database.azure.com", port=3306,
+                              database="mysql", ssl_ca="./certificate.pem", ssl_disabled=False)
+
+# Create a function to add the 'id' value to the database
+def add_id_to_database(id_value):
+    try:
+        cursor = cnx.cursor()
+        cursor.execute("INSERT INTO id-placeholders (id) VALUES (%s)", (id_value,))
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+        return True
+    except Exception as e:
+        print("Error:", str(e))
+        return False
+
 @app.route('/')
 def index():
     print('Request for index page received')
@@ -19,6 +35,7 @@ def favicon():
 @app.route('/submit', methods=['POST'])
 def submit():
     input_value = request.form.get('id')
+    add_id_to_database(input_value)
     print("Valore del campo di input:", input_value)
     return redirect(url_for('success'))
 #
@@ -30,8 +47,7 @@ def check_id():
         return jsonify({'valid': False})
     else:
         return jsonify({'valid': True})
-#
-#
+
 @app.route('/success')
 def success():
     return render_template('success.html')
