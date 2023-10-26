@@ -6,11 +6,13 @@ from flask import (Flask, redirect, render_template, request,
 
 app = Flask(__name__)
 # Define the MySQL database connection
-cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!", host="alfred-database.mysql.database.azure.com", port=3306,
-                              database="guests", ssl_ca="./certificate.pem")
+
 
 def add_id_to_database(id_value):
     try:
+        cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!",
+                                      host="alfred-database.mysql.database.azure.com", port=3306,
+                                      database="guests", ssl_ca="./certificate.pem")
         cursor = cnx.cursor()
         cursor.execute("INSERT INTO guests.registrations (`id`) VALUES (%s)", (id_value,))
         cnx.commit()
