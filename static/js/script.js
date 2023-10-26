@@ -51,8 +51,8 @@ $(document).ready(function() {
                         message: 'Price of the pool must be less than 255 characters long'
                     },
                     numeric: {
-                        decimalSeparator: ',', // Imposta la virgola come separatore decimale
-                        message: 'Price must be a number (use , as decimal separator)'
+                        decimalSeparator: '.', // Imposta la virgola come separatore decimale
+                        message: 'Price must be a number (use . as decimal separator)'
                     }
                 }
             },
