@@ -11,7 +11,8 @@ $(document).ready(function() {
                 validators: {
                     stringLength: {
                         min: 2,
-                        message: 'ID must be at least 2 characters long'
+                        max: 30,
+                        message: 'ID must be between 2 and 30 characters long'
                     },
                     notEmpty: {
                         message: 'Please supply your ID'
@@ -23,19 +24,39 @@ $(document).ready(function() {
                     }
                 }
             },
-             floor: {
+             wifi: {
+                validators: {
+                    stringLength: {
+                        max: 255,
+                        message: 'Wifi password must be less than 255 characters long'
+                    },
+                }
+            },
+            address: {
+                validators: {
+                    stringLength: {
+                        max: 255,
+                        message: 'Address must be less than 255 characters long'
+                    },
+                }
+            },
+            hot_water_solution: {
                 validators: {
                 }
             },
-            hot_water: {
+            pool_price: {
                 validators: {
+                    stringLength: {
+                        max: 255,
+                        message: 'Price of the pool must be less than 255 characters long'
+                    },
+                    numeric: {
+                        decimalSeparator: ',', // Imposta la virgola come separatore decimale
+                        message: 'Price must be a number (use , as decimal separator)'
+                    }
                 }
             },
-            parking: {
-                validators: {
-                }
-            },
-            air_conditioning: {
+            breakfast: {
                 validators: {
                 }
             }

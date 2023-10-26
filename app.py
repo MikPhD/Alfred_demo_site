@@ -2,19 +2,23 @@ import os
 import mysql.connector
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for, jsonify)
+from datetime import datetime
+from time import sleep
 
 
 app = Flask(__name__)
 # Define the MySQL database connection
 
 
-def add_id_to_database(id_value):
+def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast):
     try:
         cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!",
                                       host="alfred-database.mysql.database.azure.com", port=3306,
                                       database="guests", ssl_ca="./certificate.pem")
         cursor = cnx.cursor()
-        cursor.execute("INSERT INTO guests.registrations (`id`) VALUES (%s)", (id_value,))
+        cursor.execute("INSERT INTO guests.registrations "
+                       "(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
+                       "VALUES (%s, %s, %s, %s, %s, %s, %s)", (reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
         cnx.commit()
         cursor.close()
         cnx.close()
@@ -36,20 +40,38 @@ def favicon():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    input_value = request.form.get('id')
-    add_id_to_database(input_value)
-    print("Valore del campo di input:", input_value)
+    reg_time = datetime.now()
+    id = request.form.get('id')
+    wifi_pass = request.form.get('wifi')
+    address = request.form.get('address')
+    hot_water_solution = request.form.get('hot_water_solution')
+    pool_price = request.form.get('pool_price')
+    breakfast = request.form.get('breakfast')
+
+    add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
     return redirect(url_for('success'))
 #
 @app.route('/check_id', methods=['POST'])
 def check_id():
-    input_value = request.form.get('id')
+    sleep(3)  # Simulate a delay in checking the database
+    id_to_check = request.form.get('id')
 
-    # if input_value in used_ids:
-    #     return jsonify({'valid': False})
-    # else:
-    #     return jsonify({'valid': True})
-    return jsonify({'valid': True})
+    # Esegui una query per verificare se l'ID esiste già nel database
+    cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!",
+                                  host="alfred-database.mysql.database.azure.com", port=3306,
+                                  database="guests", ssl_ca="./certificate.pem")
+
+    cursor = cnx.cursor()
+    query = "SELECT COUNT(*) FROM registrations WHERE id = %s"
+    cursor.execute(query, (id_to_check,))
+    count = cursor.fetchone()[0]
+
+    if count > 0:
+        # L'ID esiste già nel database
+        return jsonify({'valid': False, 'message': 'This ID is already in use'})
+    else:
+        # L'ID è valido
+        return jsonify({'valid': True})
 
 @app.route('/success')
 def success():
