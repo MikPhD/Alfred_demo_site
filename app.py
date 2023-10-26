@@ -7,13 +7,12 @@ from flask import (Flask, redirect, render_template, request,
 app = Flask(__name__)
 # Define the MySQL database connection
 cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!", host="alfred-database.mysql.database.azure.com", port=3306,
-                              database="mysql", ssl_ca="./certificate.pem", ssl_disabled=False)
+                              database="guests", ssl_ca="./certificate.pem")
 
-# Create a function to add the 'id' value to the database
 def add_id_to_database(id_value):
     try:
         cursor = cnx.cursor()
-        cursor.execute("INSERT INTO id-placeholders (id) VALUES (%s)", (id_value,))
+        cursor.execute("INSERT INTO guests.registrations (`id`) VALUES (%s)", (id_value,))
         cnx.commit()
         cursor.close()
         cnx.close()
@@ -43,10 +42,11 @@ def submit():
 def check_id():
     input_value = request.form.get('id')
 
-    if input_value in used_ids:
-        return jsonify({'valid': False})
-    else:
-        return jsonify({'valid': True})
+    # if input_value in used_ids:
+    #     return jsonify({'valid': False})
+    # else:
+    #     return jsonify({'valid': True})
+    return jsonify({'valid': True})
 
 @app.route('/success')
 def success():
@@ -63,6 +63,29 @@ def hello():
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
 
+
+def check_database_connection():
+    try:
+        # Check if the connection is successful
+        if cnx.is_connected():
+            print("Connection successful!")
+
+            # Execute a simple query to test the connection
+            cursor = cnx.cursor()
+            cursor.execute("SELECT 1")
+            result = cursor.fetchone()
+            print("Query result:", result)
+
+        else:
+            print("Connection failed.")
+
+    except mysql.connector.Error as e:
+        print("Error connecting to MySQL database:", e)
+
+    finally:
+        # Close the connection
+        cnx.close()
+        pass
 
 if __name__ == '__main__':
    app.run()
