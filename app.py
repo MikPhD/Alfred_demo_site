@@ -16,6 +16,7 @@ def add_id_to_database(id_value):
         cnx.commit()
         cursor.close()
         cnx.close()
+        print("done")
         return True
     except Exception as e:
         print("Error:", str(e))
