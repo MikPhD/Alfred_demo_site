@@ -16,12 +16,7 @@ def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_sol
                                       host="alfred-database.mysql.database.azure.com", port=3306,
                                       database="guests", ssl_ca="./certificate.pem")
         cursor = cnx.cursor()
-        wifi_pass = f"wifi password = {wifi_pass}"
-        address = f"address = {address}"
-        hot_water_solution = f"hot water solution = {hot_water_solution}"
-        pool_price = f"pool price = {pool_price}"
-        breakfast = f"breakfast = {breakfast}"
-        
+
         cursor.execute("INSERT INTO guests.registrations "
                        "(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
                        "VALUES (%s, %s, %s, %s, %s, %s, %s)", (reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
