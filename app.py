@@ -32,7 +32,15 @@ def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_sol
 @app.route('/')
 def index():
     print('Request for index page received')
-    return render_template('index.html')
+    return render_template('lang_selector.html')
+
+@app.route('/index_ita')
+def index_ita():
+    return render_template('index_ita.html')
+
+@app.route('/index_en')
+def index_en():
+    return render_template('index_en.html')
 
 @app.route('/favicon.ico')
 def favicon():
@@ -114,4 +122,4 @@ def check_database_connection():
         pass
 
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)

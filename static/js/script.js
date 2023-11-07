@@ -41,7 +41,10 @@ $(document).ready(function() {
                 }
             },
             hot_water_solution: {
-                validators: {
+                validators: {                    stringLength: {
+                        max: 1000,
+                        message: 'Address must be less than 1000 characters long'
+                    },
                 }
             },
             pool_price: {
@@ -58,6 +61,10 @@ $(document).ready(function() {
             },
             breakfast: {
                 validators: {
+                    stringLength: {
+                        max: 1000,
+                        message: 'Address must be less than 1000 characters long'
+                    },
                 }
             }
             }
