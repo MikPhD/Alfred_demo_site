@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alfred Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+            type="text/javascript"></script>
+
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
+    <link rel='stylesheet'
+          href='//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+    <link rel="stylesheet" href="../static/css/pageStyle.css">
+    <link rel="stylesheet" href="../static/css/toggleStyle.css">
+
+</head>
+<body>
+
+
+<!-- partial:index.partial.html -->
+<div class="container">
+    <div class="logo-container">
+    <img src="../static/images/botique_logo.png" alt="Botique Logo" class="center-logo" style="padding-top: -50px">
+    </div>
+    <center>
+        <div class="switch">
+            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+            <label for="language-toggle"></label>
+            <span class="on">ENG</span>
+            <span class="off">ITA</span>
+        </div>
+    </center>
+
+    <form class="well form-horizontal custom-well" action="/submit" method="post" id="contact_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <div id="form-name-en" class="form-name">Create Your Own Chatbot!</div>
+            <div id="form-name-it" class="form-name">Crea il tuo Chatbot!</div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-id-en">Your Unique ID</label>
+                <label class="col-md-4 control-label" id="label-id-it" style="display: none;">Il tuo ID Unico</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="id" placeholder="Unique ID" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="login-message-en">This is your personalized BOT login! Do not forget it!</p>
+            <p id="login-message-it" style="display: none;">Questo è il tuo login BOT personalizzato! Non
+                dimenticarlo!</p>
+
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-password-en">Wifi Password</label>
+                <label class="col-md-4 control-label" id="label-password-it" style="display: none;">Password del Wifi</label>
+
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-signal"></i></span>
+                        <input name="wifi" placeholder="What's the WiFi password?" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="password-message-en">Fill this field with the password of your Wifi Network.</p>
+            <p id="password-message-it" style="display: none;">Scrivi qui la password della connessione Wifi.</p>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-address-en">Apartment address</label>
+                <label class="col-md-4 control-label" id="label-address-it">Indirizzo appartamento</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-screenshot"></i></span>
+                        <input name="address" placeholder="What's the appartment address?" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="address-message-en">Here you have to type the address of the apartment you're setting.</p>
+            <p id="address-message-it">Inserisci qui l'indirizzo dell'appartamento che stai impostando.</p>
+
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-water-en">Hot water solution</label>
+                <label class="col-md-4 control-label" id="label-water-it">Soluzione acqua calda</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
+                        <input name="hot_water_solution" placeholder="What should I do if there's no hot water?"
+                               class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="water-message-en">Type the instruction a guest can follow to solve the lack of hot water by himself.</p>
+            <p id="water-message-it">Scrivi le istruzioni affinchè l'ospite possa risolvere la mancanza di acqua calda.</p>
+
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-pool-en">Pool price</label>
+                <label class="col-md-4 control-label" id="label-pool-it">Prezzo della piscina</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
+                        <input name="pool_price" placeholder="How much is the pool acces per day?" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="pool-message-en">If your apartment does have a pool, write the price per day.</p>
+            <p id="pool-message-it">Se il tuo appartamento ha una piscina, scrivi il prezzo di accesso al giorno.</p>
+
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"id="label-breakfast-en">Breakfast Menu'</label>
+                <label class="col-md-4 control-label"id="label-breakfast-it">Menu' colazione</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-cutlery"></i></span>
+                        <input name="breakfast" placeholder="What's the breakfast menu' TODAY/ON MONDAY?"
+                               class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <p id="breakfast-message-en">What will a guest find at breakfast?</p>
+            <p id="breakfast-message-it">Cosa troveranno gli ospiti per colazione?</p>
+
+
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">Success <i
+                    class="glyphicon glyphicon-thumbs-up"></i> Thanks for playing with us! We'll wait for you on our
+                Telegram Bot!
+            </div>
+
+            <!-- Button -->
+<!--            <div class="form-group" align="center" >-->
+                <label class="col-md-4 control-label"></label>
+<!--                <div class="col-md-4">-->
+                    <div style="text-align: center; padding-top: 25px" >
+                    <button type="submit" class="btn btn-warning-custom" align="center">Send <span class="glyphicon glyphicon-send"></span>
+                    </button>
+                    </div>
+<!--                </div>-->
+<!--            </div>-->
+        </fieldset>
+    </form>
+</div><!-- /.container -->
+
+<!-- partial -->
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script src="../static/js/formValidator.js"></script>
+<script src="../static/js/langToggle.js"></script>
+
+</body>
+</html>
