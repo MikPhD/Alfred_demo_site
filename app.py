@@ -15,6 +15,11 @@ def add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_wat
                                       database="guests", ssl_ca="./certificate.pem")
         cursor = cnx.cursor()
 
+        if lang=='ITA':
+            lang='it'
+        else:
+            lang='en'
+
         cursor.execute("INSERT INTO guests.registrations "
                        "(reg_time, language, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
                        "VALUES (%s, %s,  %s, %s, %s, %s, %s, %s)", (reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
@@ -39,6 +44,7 @@ def favicon():
 @app.route('/submit', methods=['POST'])
 def submit():
     reg_time = datetime.now()
+    lang = request.form['language-toggle']
     id = request.form.get('id')
     wifi_pass = request.form.get('wifi')
     address = request.form.get('address')
@@ -46,7 +52,6 @@ def submit():
     pool_price = request.form.get('pool_price')
     breakfast = request.form.get('breakfast')
 
-    lang = request.form['language-toggle']
 
     add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
 
