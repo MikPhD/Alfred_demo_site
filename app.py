@@ -55,10 +55,15 @@ def submit():
 
     add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
 
-    if lang == 'ITA':
-        return redirect(url_for('success_ita'))
+    user_agent = request.headers.get('User-Agent')
+    is_mobile = 'Mobi' in user_agent
+    if is_mobile:
+        return redirect("http://t.me/alfred_demo_ita_bot")
     else:
-        return redirect(url_for('success_eng'))
+        if lang == 'ITA':
+            return redirect(url_for('success_ita'))
+        else:
+            return redirect(url_for('success_eng'))
     #
 @app.route('/check_id', methods=['POST'])
 def check_id():
