@@ -7,10 +7,8 @@ from time import sleep
 
 
 app = Flask(__name__)
-# Define the MySQL database connection
 
-
-def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast):
+def add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast):
     try:
         cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!",
                                       host="alfred-database.mysql.database.azure.com", port=3306,
@@ -18,8 +16,8 @@ def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_sol
         cursor = cnx.cursor()
 
         cursor.execute("INSERT INTO guests.registrations "
-                       "(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
-                       "VALUES (%s, %s, %s, %s, %s, %s, %s)", (reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
+                       "(reg_time, language, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
+                       "VALUES (%s, %s,  %s, %s, %s, %s, %s, %s)", (reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
         cnx.commit()
         cursor.close()
         cnx.close()
@@ -30,13 +28,13 @@ def add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_sol
         return False
 @app.route('/')
 def index():
-    print('Request for index page received')
+    # print('Request for index page received')
     return render_template('index.html')
 
-@app.route('/favicon.ico')
+@app.route('/logo.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+                               '/images/logo.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -48,9 +46,15 @@ def submit():
     pool_price = request.form.get('pool_price')
     breakfast = request.form.get('breakfast')
 
-    add_registration_to_database(reg_time, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
-    return redirect(url_for('success'))
-#
+    lang = request.form['language-toggle']
+
+    add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
+
+    if lang == 'ITA':
+        return redirect(url_for('success_ita'))
+    else:
+        return redirect(url_for('success_eng'))
+    #
 @app.route('/check_id', methods=['POST'])
 def check_id():
     sleep(3)  # Simulate a delay in checking the database
@@ -73,9 +77,13 @@ def check_id():
         # L'ID è valido
         return jsonify({'valid': True})
 
-@app.route('/success')
-def success():
-    return render_template('success.html')
+@app.route('/success_ita')
+def success_ita():
+    return render_template('success_ita.html')
+
+@app.route('/success_eng')
+def success_eng():
+    return render_template('success_eng.html')
 
 @app.route('/hello', methods=['POST'])
 def hello():

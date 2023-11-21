@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>-->
-    <meta charset="UTF-8" />
+    <!--    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <meta charset="UTF-8"/>
 
 
     <title>Alfred Demo</title>
@@ -22,19 +22,30 @@
 <!-- partial:index.partial.html -->
 <div class="container">
     <div class="logo-container">
-    <img src="../static/images/botique_logo.png" alt="Botique Logo" class="center-logo" style="padding-top: -50px">
+        <img src="../static/images/botique_logo.png" alt="Botique Logo" class="center-logo" style="padding-top: -50px">
     </div>
-    <center>
-        <div class="switch">
-            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
-            <label for="language-toggle"></label>
-            <span class="on">ENG</span>
-            <span class="off">ITA</span>
-        </div>
-    </center>
+
 
     <form class="well form-horizontal custom-well" action="/submit" method="post" id="contact_form">
         <fieldset>
+            <input type="hidden" name="language-toggle" id="hidden-language-toggle" value="ITA">
+
+            <center>
+                <div class="switch">
+                    <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox"
+                           onclick="updateHiddenToggle()">
+                    <label for="language-toggle"></label>
+                    <span class="off">ENG</span>
+                    <span class="on">ITA</span>
+                </div>
+            </center>
+            <script>
+                function updateHiddenToggle() {
+                    var hiddenToggle = document.getElementById('hidden-language-toggle');
+                    var languageToggle = document.getElementById('language-toggle');
+                    hiddenToggle.value = languageToggle.checked ? 'ENG' : 'ITA';
+                }
+            </script>
 
             <!-- Form Name -->
             <div id="form-name-en" class="form-name">Create Your Own Chatbot!</div>
@@ -60,7 +71,8 @@
 
             <div class="form-group">
                 <label class="col-md-4 control-label" id="label-password-en">Wifi Password</label>
-                <label class="col-md-4 control-label" id="label-password-it" style="display: none;">Password del Wifi</label>
+                <label class="col-md-4 control-label" id="label-password-it" style="display: none;">Password del
+                    Wifi</label>
 
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
@@ -102,8 +114,10 @@
                     </div>
                 </div>
             </div>
-            <p id="water-message-en">Type the instruction a guest can follow to solve the lack of hot water by himself.</p>
-            <p id="water-message-it">Scrivi le istruzioni affinchè l'ospite possa risolvere la mancanza di acqua calda.</p>
+            <p id="water-message-en">Type the instruction a guest can follow to solve the lack of hot water by
+                himself.</p>
+            <p id="water-message-it">Scrivi le istruzioni affinchè l'ospite possa risolvere la mancanza di acqua
+                calda.</p>
 
 
             <!-- Text input-->
@@ -126,8 +140,8 @@
             <!-- Text input-->
 
             <div class="form-group">
-                <label class="col-md-4 control-label"id="label-breakfast-en">Breakfast Menu'</label>
-                <label class="col-md-4 control-label"id="label-breakfast-it">Menu' colazione</label>
+                <label class="col-md-4 control-label" id="label-breakfast-en">Breakfast Menu'</label>
+                <label class="col-md-4 control-label" id="label-breakfast-it">Menu' colazione</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-cutlery"></i></span>
@@ -148,15 +162,16 @@
             </div>
 
             <!-- Button -->
-<!--            <div class="form-group" align="center" >-->
-                <label class="col-md-4 control-label"></label>
-<!--                <div class="col-md-4">-->
-                    <div style="text-align: center; padding-top: 25px" >
-                    <button type="submit" class="btn btn-warning-custom" align="center">Send <span class="glyphicon glyphicon-send"></span>
-                    </button>
-                    </div>
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="form-group" align="center" >-->
+            <label class="col-md-4 control-label"></label>
+            <!--                <div class="col-md-4">-->
+            <div style="text-align: center; padding-top: 25px">
+                <button type="submit" class="btn btn-warning-custom" align="center">Send <span
+                        class="glyphicon glyphicon-send"></span>
+                </button>
+            </div>
+            <!--                </div>-->
+            <!--            </div>-->
         </fieldset>
     </form>
 </div><!-- /.container -->

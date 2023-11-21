@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var checkbox = document.querySelector('#language-toggle');
     checkbox.addEventListener('change', function() {
         var checked = this.checked;
-        toggleLanguage(checked ? 'it' : 'en');
+        toggleLanguage(checked ? 'en' : 'it');
     });
 
     // Inizializza la lingua in base alla posizione del toggle all'avvio
-    toggleLanguage(checkbox.checked ? 'it' : 'en');
+    toggleLanguage(checkbox.checked ? 'en' : 'it');
 });
 
 function toggleLanguage(lang) {
