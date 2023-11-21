@@ -58,7 +58,7 @@ def submit():
     user_agent = request.headers.get('User-Agent')
     is_mobile = 'Mobi' in user_agent
     if is_mobile:
-        return redirect("http://t.me/alfred_demo_ita_bot")
+        return redirect("http://t.me/botique_alfred_bot")
     else:
         if lang == 'ITA':
             return redirect(url_for('success_ita'))
