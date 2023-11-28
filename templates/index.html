@@ -125,10 +125,10 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-cutlery"></i></span>
                         <input id="in_breakfast_en" name="breakfast"
-                               placeholder="E.g. Italian breakfast, continental breakfast, coffee, croissant..."
+                               placeholder="E.g. Italian breakfast, coffee, croissant..."
                                class="form-control" type="text">
                         <input id="in_breakfast_ita" name="breakfast"
-                               placeholder="Es. Colazione italiana, colazione continentale, caffè, croissant..."
+                               placeholder="Es. Colazione italiana, caffè, croissant..."
                                class="form-control" type="text">
                     </div>
                 </div>
@@ -148,6 +148,17 @@
                                type="text">
                         <input id="in_pool_ita" name="pool_price" placeholder="Es. 10, 20, 30..." class="form-control"
                                type="text">
+                        <span class="input-group-addon">€</span>
+                        <select id="select_pool_en" name="pool_price_selector" class="form-control selectpicker" style="white-space: nowrap;">
+                            <option value="day">per hour</option>
+                            <option value="day">entire day</option>
+                            <option value="hour">half day</option>
+                        </select>
+                        <select id="select_pool_ita" name="pool_price_selector" class="form-control selectpicker" style="white-space: nowrap;">
+                            <option value="day">per ora</option>
+                            <option value="day">per giorno</option>
+                            <option value="hour">per mezza giornata</option>
+                        </select>
                     </div>
                 </div>
             </div>
