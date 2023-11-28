@@ -48,93 +48,72 @@
             </script>
 
             <!-- Form Name -->
-            <div id="form-name-en" class="form-name">Create Your Own Chatbot!</div>
-            <div id="form-name-it" class="form-name">Crea il tuo Chatbot!</div>
+            <div id="form-name-en" class="form-name">Customize Alfred, your e-concierge!</div>
+            <div id="form-name-it" class="form-name">Personalizza Afred, il tuo e-concierge!</div>
+
+            <div id="form2-name-en" class="form2-name">You are a property manager usgin Alfred for guest support in your
+                B&B. Enter you B&B data in the Wizard, click Save, then chat with Alfred in the role of a guest to test your
+                setup.
+            </div>
+            <div id="form2-name-it" class="form2-name">Sei un property manager che usa Alfred per il supporto degli
+                Ospiti nel suo B&B. Inserisci nel Wizard i dati sul tuo B&B e clicca Salva, poi chiacchiera con Alfred nel ruolo di Ospite
+                per testare il tuo setup.
+            </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" id="label-id-en">Your Unique ID</label>
-                <label class="col-md-4 control-label" id="label-id-it" style="display: none;">Il tuo ID Unico</label>
+                <label class="col-md-4 control-label" id="label-id-en">Unique ID</label>
+                <label class="col-md-4 control-label" id="label-id-it" style="display: none;">ID Unico</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="id" placeholder="Unique ID" class="form-control" type="text">
+                        <input id="in_id_en" name="id" placeholder="Identifier to log in to Alfred" class="form-control"
+                               type="text">
+                        <input id="in_id_ita" name="id" placeholder="ID per loggarti in Alfred" class="form-control"
+                               type="text">
                     </div>
                 </div>
             </div>
-            <p id="login-message-en">This is your personalized BOT login! Do not forget it!</p>
-            <p id="login-message-it" style="display: none;">Questo è il tuo login BOT personalizzato! Non
-                dimenticarlo!</p>
+<!--            <p id="login-message-en">This is your personalized BOT login! Do not forget it!</p>-->
+<!--            <p id="login-message-it" style="display: none;">Questo è il tuo login BOT personalizzato! Non-->
+<!--                dimenticarlo!</p>-->
 
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-address-en">Address</label>
+                <label class="col-md-4 control-label" id="label-address-it">Indirizzo</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-screenshot"></i></span>
+                        <input id="in_address_en" name="address" placeholder="Address of the B&B" class="form-control"
+                               type="text">
+                        <input id="in_address_ita" name="address" placeholder="Indirizzo del B&B" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+<!--            <p id="address-message-en">Here you have to type the address of the apartment you're setting.</p>-->
+<!--            <p id="address-message-it">Inserisci qui l'indirizzo dell'appartamento che stai impostando.</p>-->
 
             <!-- Text input-->
 
             <div class="form-group">
-                <label class="col-md-4 control-label" id="label-password-en">Wifi Password</label>
+                <label class="col-md-4 control-label" id="label-password-en">Wi-Fi Password</label>
                 <label class="col-md-4 control-label" id="label-password-it" style="display: none;">Password del
-                    Wifi</label>
+                    Wi-Fi</label>
 
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-signal"></i></span>
-                        <input name="wifi" placeholder="What's the WiFi password?" class="form-control" type="text">
-                    </div>
-                </div>
-            </div>
-            <p id="password-message-en">Fill this field with the password of your Wifi Network.</p>
-            <p id="password-message-it" style="display: none;">Scrivi qui la password della connessione Wifi.</p>
-
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" id="label-address-en">Apartment address</label>
-                <label class="col-md-4 control-label" id="label-address-it">Indirizzo appartamento</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-screenshot"></i></span>
-                        <input name="address" placeholder="What's the appartment address?" class="form-control"
+                        <input id="in_wifi_en" name="wifi" placeholder="Wi-Fi password for the B&B" class="form-control"
                                type="text">
-                    </div>
-                </div>
-            </div>
-            <p id="address-message-en">Here you have to type the address of the apartment you're setting.</p>
-            <p id="address-message-it">Inserisci qui l'indirizzo dell'appartamento che stai impostando.</p>
-
-
-            <!-- Text input-->
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" id="label-water-en">Hot water solution</label>
-                <label class="col-md-4 control-label" id="label-water-it">Soluzione acqua calda</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
-                        <input name="hot_water_solution" placeholder="What should I do if there's no hot water?"
+                        <input id="in_wifi_ita" name="wifi" placeholder="Password del Wi-Fi nel B&B"
                                class="form-control" type="text">
                     </div>
                 </div>
             </div>
-            <p id="water-message-en">Type the instruction a guest can follow to solve the lack of hot water by
-                himself.</p>
-            <p id="water-message-it">Scrivi le istruzioni affinchè l'ospite possa risolvere la mancanza di acqua
-                calda.</p>
-
-
-            <!-- Text input-->
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" id="label-pool-en">Pool price</label>
-                <label class="col-md-4 control-label" id="label-pool-it">Prezzo della piscina</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
-                        <input name="pool_price" placeholder="How much is the pool acces per day?" class="form-control"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <p id="pool-message-en">If your apartment does have a pool, write the price per day.</p>
-            <p id="pool-message-it">Se il tuo appartamento ha una piscina, scrivi il prezzo di accesso al giorno.</p>
+<!--            <p id="password-message-en">Fill this field with the password of your Wifi Network.</p>-->
+<!--            <p id="password-message-it" style="display: none;">Scrivi qui la password della connessione Wifi.</p>-->
 
 
             <!-- Text input-->
@@ -145,14 +124,57 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-cutlery"></i></span>
-                        <input name="breakfast" placeholder="What's the breakfast menu' TODAY/ON MONDAY?"
-                               class="form-control"
+                        <input id="in_breakfast_en" name="breakfast"
+                               placeholder="E.g.: Italian breakfast, continental breakfast, coffee, croissant..."
+                               class="form-control" type="text">
+                        <input id="in_breakfast_ita" name="breakfast"
+                               placeholder="Es.: Colazione italiana, colazione continentale, caffè, croissant..."
+                               class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+<!--            <p id="breakfast-message-en">What will a guest find at breakfast?</p>-->
+<!--            <p id="breakfast-message-it">Cosa troveranno gli ospiti per colazione?</p>-->
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-pool-en">Pool price</label>
+                <label class="col-md-4 control-label" id="label-pool-it">Prezzo piscina</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
+                        <input id="in_pool_en" name="pool_price" placeholder="E.g.: 10, 20, 30..." class="form-control"
+                               type="text">
+                        <input id="in_pool_ita" name="pool_price" placeholder="Es.: 10, 20, 30..." class="form-control"
                                type="text">
                     </div>
                 </div>
             </div>
-            <p id="breakfast-message-en">What will a guest find at breakfast?</p>
-            <p id="breakfast-message-it">Cosa troveranno gli ospiti per colazione?</p>
+<!--            <p id="pool-message-en">If your apartment does have a pool, write the price per day.</p>-->
+<!--            <p id="pool-message-it">Se il tuo appartamento ha una piscina, scrivi il prezzo di accesso al giorno.</p>-->
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" id="label-water-en">Hot water fix solution</label>
+                <label class="col-md-4 control-label" id="label-water-it">Soluzione malfunzionamento acqua calda</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
+                        <input id="in_hotwater_en" name="hot_water_solution"
+                               placeholder="E.g.: Check that the boiler is turned on..." class="form-control"
+                               type="text">
+                        <input id="in_hotwater_ita" name="hot_water_solution"
+                               placeholder="Es.: Controlla che la caldaia sia accesa..." class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+<!--            <p id="water-message-en">Type the instruction a guest can follow to solve the lack of hot water by-->
+<!--                himself.</p>-->
+<!--            <p id="water-message-it">Scrivi le istruzioni affinchè l'ospite possa risolvere la mancanza di acqua-->
+<!--                calda.</p>-->
 
 
             <!-- Success message -->
@@ -163,12 +185,15 @@
 
             <!-- Button -->
             <!--            <div class="form-group" align="center" >-->
-            <label class="col-md-4 control-label"></label>
+            <!--            <label class="col-md-4 control-label"></label>-->
             <!--                <div class="col-md-4">-->
-            <div style="text-align: center; padding-top: 25px">
-                <button type="submit" class="btn btn-warning-custom" align="center">Send <span
-                        class="glyphicon glyphicon-send"></span>
-                </button>
+            <div id="send_button_en" class="send_button">
+                <button type="submit" class="btn btn-warning-custom">Save and talk to Alfred!<span
+                        class="glyphicon glyphicon-send"></span></button>
+            </div>
+            <div id="send_button_ita" class="send_button" style="display: none;">
+                <button type="submit" class="btn btn-warning-custom">Salva e parla con Alfred!
+                    <span class="glyphicon glyphicon-send"></span></button>
             </div>
             <!--                </div>-->
             <!--            </div>-->

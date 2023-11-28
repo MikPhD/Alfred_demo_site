@@ -49,3 +49,16 @@ p {
     font-size: large;
     font-weight: bold;
 }
+
+.form2-name {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: large;
+}
+
+.send_button {
+    text-align: center;
+    padding-top: 25px
+}
