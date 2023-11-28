@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="67d0669a-da54-4498-aa8c-aedaacd0a959" name="azureVM">
+        <fileTransfer rootFolder="/home/alfredVM" accessType="SFTP" host="20.199.92.18" port="22" sshConfigId="ed29ec2a-efbf-4dec-8a4c-ed7382fca144" sshConfig="alfredVM@20.199.92.18:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
