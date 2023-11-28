@@ -51,11 +51,11 @@ p {
 }
 
 .form2-name {
-    width: 50%;
+    width: 60%;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 30px;
-    font-size: large;
+    font-size: medium;
 }
 
 .send_button {
