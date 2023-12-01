@@ -45,13 +45,22 @@ def favicon():
 def submit():
     reg_time = datetime.now()
     lang = request.form['language-toggle']
-    id = request.form.get('id')
-    wifi_pass = request.form.get('wifi')
-    address = request.form.get('address')
-    hot_water_solution = request.form.get('hot_water_solution')
-    pool_price = request.form.get('pool_price')
-    breakfast = request.form.get('breakfast')
-    price_per = request.form.get('pool_price_selector')
+    if lang == 'ITA':
+        id = request.form.getlist('id')[1]
+        wifi_pass = request.form.getlist('wifi')[1]
+        address = request.form.getlist('address')[1]
+        hot_water_solution = request.form.getlist('hot_water_solution')[1]
+        pool_price = request.form.getlist('pool_price')[1]
+        breakfast = request.form.getlist('breakfast')[1]
+        price_per = request.form.getlist('pool_price_selector')[1]
+    else:
+        id = request.form.getlist('id')[0]
+        wifi_pass = request.form.getlist('wifi')[0]
+        address = request.form.getlist('address')[0]
+        hot_water_solution = request.form.getlist('hot_water_solution')[0]
+        pool_price = request.form.getlist('pool_price')[0]
+        breakfast = request.form.getlist('breakfast')[0]
+        price_per = request.form.getlist('pool_price_selector')[0]
 
     add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast, price_per)
 
