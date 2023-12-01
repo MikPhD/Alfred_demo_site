@@ -8,7 +8,7 @@ from time import sleep
 
 app = Flask(__name__)
 
-def add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast):
+def add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast, price_per):
     try:
         cnx = mysql.connector.connect(user="Alfred", password="b0t1qu3m3!",
                                       host="alfred-database.mysql.database.azure.com", port=3306,
@@ -21,8 +21,8 @@ def add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_wat
             lang='en'
 
         cursor.execute("INSERT INTO guests.registrations "
-                       "(reg_time, language, id, wifi_pass, address, hot_water_solution, pool_price, breakfast) "
-                       "VALUES (%s, %s,  %s, %s, %s, %s, %s, %s)", (reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast))
+                       "(reg_time, language, id, wifi_pass, address, hot_water_solution, pool_price, breakfast, price_per) "
+                       "VALUES (%s, %s,  %s, %s, %s, %s, %s, %s, %s)", (reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast, price_per))
         cnx.commit()
         cursor.close()
         cnx.close()
@@ -45,20 +45,29 @@ def favicon():
 def submit():
     reg_time = datetime.now()
     lang = request.form['language-toggle']
-    id = request.form.get('id')
-    wifi_pass = request.form.get('wifi')
-    address = request.form.get('address')
-    hot_water_solution = request.form.get('hot_water_solution')
-    pool_price = request.form.get('pool_price')
-    breakfast = request.form.get('breakfast')
+    if lang == 'ITA':
+        id = request.form.getlist('id')[1]
+        wifi_pass = request.form.getlist('wifi')[1]
+        address = request.form.getlist('address')[1]
+        hot_water_solution = request.form.getlist('hot_water_solution')[1]
+        pool_price = request.form.getlist('pool_price')[1]
+        breakfast = request.form.getlist('breakfast')[1]
+        price_per = request.form.getlist('pool_price_selector')[1]
+    else:
+        id = request.form.getlist('id')[0]
+        wifi_pass = request.form.getlist('wifi')[0]
+        address = request.form.getlist('address')[0]
+        hot_water_solution = request.form.getlist('hot_water_solution')[0]
+        pool_price = request.form.getlist('pool_price')[0]
+        breakfast = request.form.getlist('breakfast')[0]
+        price_per = request.form.getlist('pool_price_selector')[0]
 
-
-    add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast)
+    add_registration_to_database(reg_time, lang, id, wifi_pass, address, hot_water_solution, pool_price, breakfast, price_per)
 
     user_agent = request.headers.get('User-Agent')
     is_mobile = 'Mobi' in user_agent
     if is_mobile:
-        return redirect("http://t.me/botique_alfred_bot")
+        return redirect("http://t.me/botique_alfred_bot?start=website")
     else:
         if lang == 'ITA':
             return redirect(url_for('success_ita'))
@@ -107,28 +116,28 @@ def hello():
        return redirect(url_for('index'))
 
 
-def check_database_connection():
-    try:
-        # Check if the connection is successful
-        if cnx.is_connected():
-            print("Connection successful!")
-
-            # Execute a simple query to test the connection
-            cursor = cnx.cursor()
-            cursor.execute("SELECT 1")
-            result = cursor.fetchone()
-            print("Query result:", result)
-
-        else:
-            print("Connection failed.")
-
-    except mysql.connector.Error as e:
-        print("Error connecting to MySQL database:", e)
-
-    finally:
-        # Close the connection
-        cnx.close()
-        pass
+# def check_database_connection():
+#     try:
+#         # Check if the connection is successful
+#         if cnx.is_connected():
+#             print("Connection successful!")
+#
+#             # Execute a simple query to test the connection
+#             cursor = cnx.cursor()
+#             cursor.execute("SELECT 1")
+#             result = cursor.fetchone()
+#             print("Query result:", result)
+#
+#         else:
+#             print("Connection failed.")
+#
+#     except mysql.connector.Error as e:
+#         print("Error connecting to MySQL database:", e)
+#
+#     finally:
+#         # Close the connection
+#         cnx.close()
+#         pass
 
 if __name__ == '__main__':
    app.run(debug=True)
