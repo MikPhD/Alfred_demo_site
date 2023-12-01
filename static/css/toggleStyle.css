@@ -114,3 +114,54 @@ input.check-toggle-round-flat:checked + label:after {
 }
 
 /* Il resto del tuo CSS va qui */
+
+.container {
+  color: white;
+}
+
+.form-horizontal {
+  background-color: #06A4AD;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+.center-logo {
+  margin-left: 4rem;
+}
+
+.btn-warning-custom {
+  background-color: white !important;
+  color: #555 !important;
+}
+
+input.check-toggle-round-flat + label {
+  padding: 2px;
+  width: 97px;
+  height: 35px;
+  background-color: #339999;
+  border: 1px solid white;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+}
+
+@media (min-width: 768px)  {
+  .form-horizontal .control-label {
+    padding-top: 0px;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
+
+@media (max-width: 990px)  {
+  .form-group {
+    padding-top: 0px;
+    margin-bottom: 0;
+    text-align: right;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
