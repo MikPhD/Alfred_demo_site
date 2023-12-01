@@ -15,6 +15,7 @@
           href='//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
     <link rel="stylesheet" href="../static/css/pageStyle.css">
     <link rel="stylesheet" href="../static/css/toggleStyle.css">
+    <link rel="stylesheet" href="../static/css/custom.css">
 </head>
 <body>
 
@@ -26,8 +27,8 @@
     </div>
 
 
-    <form class="well form-horizontal custom-well" action="/submit" method="post" id="contact_form">
-        <fieldset>
+    <form class="form-horizontal custom-well" action="/submit" method="post" id="contact_form">
+        <fieldset class="background-form">
             <input type="hidden" name="language-toggle" id="hidden-language-toggle" value="ITA">
 
             <center>
@@ -43,7 +44,21 @@
                 function updateHiddenToggle() {
                     var hiddenToggle = document.getElementById('hidden-language-toggle');
                     var languageToggle = document.getElementById('language-toggle');
+                    
+                    // var send_button_en = document.getElementById('send_button_eng');
+                    // var send_button_ita = document.getElementById('send_button_it');
+
                     hiddenToggle.value = languageToggle.checked ? 'ENG' : 'ITA';
+
+                    // if(hiddenToggle.value == 'ENG') {
+                    //     $('#send_button_eng').show();
+                    //     $('#send_button_it').hide();
+                    // } 
+                    // if(hiddenToggle.value == 'ITA') {
+                    //     $('#send_button_eng').hide();
+                    //     $('#send_button_it').show();
+                    // }
+
                 }
             </script>
 
@@ -198,11 +213,11 @@
             <!--            <div class="form-group" align="center" >-->
             <!--            <label class="col-md-4 control-label"></label>-->
             <!--                <div class="col-md-4">-->
-            <div id="send_button_en" class="send_button">
+            <div id="snd_button_en" class="send_button">
                 <button type="submit" class="btn btn-warning-custom">Save and talk to Alfred!<span
                         class="glyphicon glyphicon-send"></span></button>
             </div>
-            <div id="send_button_ita" class="send_button" style="display: none;">
+            <div id="snd_button_ita" class="send_button">
                 <button type="submit" class="btn btn-warning-custom">Salva e parla con Alfred!
                     <span class="glyphicon glyphicon-send"></span></button>
             </div>
