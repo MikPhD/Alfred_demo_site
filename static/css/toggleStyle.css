@@ -152,7 +152,6 @@ input.check-toggle-round-flat + label {
   .form-horizontal .control-label {
     padding-top: 0px;
     margin-bottom: 0;
-    text-align: right;
   }
 }
 
@@ -160,8 +159,11 @@ input.check-toggle-round-flat + label {
   .form-group {
     padding-top: 0px;
     margin-bottom: 0;
-    text-align: right;
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .center-logo {
+    margin-left: 0;
   }
 }
